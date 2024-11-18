@@ -10,25 +10,34 @@ except:
 
 
 bot = Bot(token=token)
-dp = Dispatcher(bot, storage=MemoryStorage())
+dp = Dispatcher(bot, storage=MemoryStorage(), )
 
 
 @dp.message_handler(commands=['start'])
 async def start_message(message):
-    #печатает строку в консоли 'Привет! Я бот помогающий твоему здоровью.' .
+    # печатает строку в консоли 'Привет! Я бот помогающий твоему здоровью.' .
     # Запускается только когда написана команда '/start' в чате с ботом.
-    # (используйте соответствующий декоратор)
     print('Привет! Я бот помогающий твоему здоровью.')
 
 
 @dp.message_handler()
 async def all_messages(message):
-    # all_massages(message) - печатает строку в консоли 'Введите команду /start, чтобы начать общение.'. Запускается при любом обращении не описанном ранее. (используйте соответствующий декоратор)
-    print("Сообщение")
+    # печатает строку в консоли 'Введите команду /start, чтобы начать общение.'.
+    # Запускается при любом обращении не описанном ранее.
+    print('Введите команду /start, чтобы начать общение.')
 
 
 def main():
     executor.start_polling(dp, skip_updates=True)
+    """
+    Ввод в чат Telegram:
+    Хэй!
+    /start
+    Вывод в консоль:
+    Updates were skipped successfully.
+    Введите команду /start, чтобы начать общение.
+    Привет! Я бот помогающий твоему здоровью.
+    """
 
 
 if __name__ == '__main__':
