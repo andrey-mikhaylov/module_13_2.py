@@ -1,7 +1,18 @@
-from credentials import token
+from aiogram import Bot, Dispatcher, executor, types
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+import asyncio
+
+try:
+    from credentials import token
+except:
+    print("Error: You must use your own Telegram Bot API token to use this program")
+    print("Place token in credentials.py")
+
 
 def main():
-    pass
+    bot = Bot(token=token)
+    dp = Dispatcher(bot, storage=MemoryStorage())
+    executor.start_polling(dp, skip_updates=True)
 
 
 if __name__ == '__main__':
