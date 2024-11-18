@@ -9,9 +9,16 @@ except:
     print("Place token in credentials.py")
 
 
+bot = Bot(token=token)
+dp = Dispatcher(bot, storage=MemoryStorage())
+
+
+@dp.message_handler()
+async def all_messages(message):
+    print("Сообщение")
+
+
 def main():
-    bot = Bot(token=token)
-    dp = Dispatcher(bot, storage=MemoryStorage())
     executor.start_polling(dp, skip_updates=True)
 
 
