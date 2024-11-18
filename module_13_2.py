@@ -13,8 +13,17 @@ bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
+@dp.message_handler(commands=['start'])
+async def start_message(message):
+    #печатает строку в консоли 'Привет! Я бот помогающий твоему здоровью.' .
+    # Запускается только когда написана команда '/start' в чате с ботом.
+    # (используйте соответствующий декоратор)
+    print('Привет! Я бот помогающий твоему здоровью.')
+
+
 @dp.message_handler()
 async def all_messages(message):
+    # all_massages(message) - печатает строку в консоли 'Введите команду /start, чтобы начать общение.'. Запускается при любом обращении не описанном ранее. (используйте соответствующий декоратор)
     print("Сообщение")
 
 
