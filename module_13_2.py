@@ -4,9 +4,10 @@ import asyncio
 
 try:
     from credentials import token
-except:
+except ImportError:
     print("Error: You must use your own Telegram Bot API token to use this program")
     print("Place token in credentials.py")
+    exit(1)
 
 
 bot = Bot(token=token)
