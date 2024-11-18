@@ -1,3 +1,5 @@
+from credentials import token
+
 def main():
     pass
 
